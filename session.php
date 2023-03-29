@@ -1,5 +1,5 @@
 <?php
-require "controller/session.php";
+require "controller/login.php";
 ?>
 
 <!DOCTYPE html>
