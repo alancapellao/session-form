@@ -20,4 +20,3 @@ if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['ema
         echo json_encode(array("erro" => 1, "mensagem" => "User or email already exists."));
     }
 }
-?>

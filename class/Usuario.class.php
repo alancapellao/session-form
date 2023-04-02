@@ -27,10 +27,12 @@ class Usuario
         $query->execute(array($this->username, $this->email));
 
         if ($query->rowCount()) {
+
             return false;
         } else {
             $query = $conn->prepare("INSERT INTO usuarios(username, email, password) values(?, ?, ?)");
             $query->execute(array($this->username, $this->email, password_hash($this->password, PASSWORD_BCRYPT, $options)));
+
             return true;
         }
     }
@@ -43,6 +45,7 @@ class Usuario
         $query->execute(array($this->username, $this->username));
 
         if ($query->rowCount()) {
+
             $user = $query->fetch();
 
             if (password_verify($this->password, $user['password'])) {
@@ -50,12 +53,14 @@ class Usuario
                 $_SESSION['id'] = $user['id'];
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['email'] = $user['email'];
+
                 return true;
             } else {
 
                 unset($_SESSION['id']);
                 unset($_SESSION['username']);
                 unset($_SESSION['email']);
+
                 return false;
             }
         } else {
@@ -73,8 +78,10 @@ class Usuario
         $query->execute(array($_SESSION['username'], $_SESSION['email']));
 
         if ($query->rowCount()) {
+
             $array = $query->fetch();
         }
+
         return $array;
     }
 
@@ -92,4 +99,3 @@ class Usuario
         }
     }
 }
-?>

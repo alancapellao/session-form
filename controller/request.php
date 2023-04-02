@@ -18,4 +18,3 @@ if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['pas
         echo json_encode(array("erro" => 1, "mensagem" => "Incorrect username or password."));
     }
 }
-?>

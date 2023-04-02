@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 $host = "localhost";
@@ -15,4 +14,5 @@ try {
 } catch (PDOException $e) {
     $conn = null;
 }
+
 ?>

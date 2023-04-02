@@ -1,7 +1,3 @@
-<?php
-require "controller/session.php";
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,55 +13,17 @@ require "controller/session.php";
         <div class="form">
             <form class="session-form" id="formulario">
                 <h1>Session</h1>
-                <input type="text" placeholder="id" id="id" name="id" value="<?php echo $usuario['id']; ?>" disabled />
-                <input type="text" placeholder="username" id="username" name="username" value="<?php echo $usuario['username']; ?>"/>
-                <input type="text" placeholder="email" id="email" name="email" value="<?php echo $usuario['email']; ?>"/>
+                <input type="text" placeholder="id" id="id" name="id" disabled />
+                <input type="text" placeholder="username" id="username" name="username" />
+                <input type="text" placeholder="email" id="email" name="email" />
                 <button id="update">Update</button>
-                <p class="message"><a href="index.php" onclick="<?php session_unset(); ?>">Logout</a></p>
+                <p class="message"><a href="index.php" id="logout">Logout</a></p>
             </form>
         </div>
     </div>
 </body>
 
 <script src="js/jquery.js"></script>
-
-<script>
-
-    $(function () {
-
-        $("#update").on("click", function (e) {
-            e.preventDefault();
-
-            var campoId = $("#id").val();
-            var campoUser = $("#username").val();
-            var campoEmail = $("#email").val();
-
-            if (campoUser.trim() == "" || campoEmail.trim() == "") {
-                alert("Fill in all fields.");
-            } else {
-
-                $.ajax({
-
-                    url: "controller/update.php",
-                    type: "POST",
-                    data: {
-                        id: campoId,
-                        username: campoUser,
-                        email: campoEmail
-                    },
-                    success: function (retorno) {
-                        retorno = JSON.parse(retorno);
-
-                        if (retorno["erro"]) {
-                            alert(retorno["mensagem"]);
-                        } else {
-                            alert(retorno["mensagem"]);
-                        }
-                    }
-                });
-            }
-        });
-    });
-</script>
+<script src="js/session.js"></script>
 
 </html>
