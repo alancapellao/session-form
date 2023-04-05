@@ -1,23 +1,21 @@
 $(function () {
 
-    $("#register").on("click", function (e) {
+    $("#login").on("click", function (e) {
         e.preventDefault();
 
         var campoUser = $("#username").val();
-        var campoEmail = $("#email").val();
         var campoPassword = $("#password").val();
 
-        if (campoUser.trim() == "" || campoEmail.trim() == "" || campoPassword.trim() == "") {
+        if (campoUser.trim() == "" || campoPassword.trim() == "") {
             alert("Fill in all fields.");
         } else {
 
             $.ajax({
 
-                url: "controller/insert.php",
+                url: "../../src/controller/request.php",
                 type: "POST",
                 data: {
                     username: campoUser,
-                    email: campoEmail,
                     password: campoPassword
                 },
                 success: function (retorno) {
@@ -27,7 +25,7 @@ $(function () {
                         alert(retorno["mensagem"]);
                     } else {
                         alert(retorno["mensagem"]);
-                        window.location.href = "index.php";
+                        window.location.href = "session.php";
                     }
                 }
             });

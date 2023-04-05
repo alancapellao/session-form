@@ -13,7 +13,7 @@ $(function () {
 
             $.ajax({
 
-                url: "controller/update.php",
+                url: "../../src/controller/update.php",
                 type: "POST",
                 data: {
                     id: campoId,
@@ -34,7 +34,7 @@ $(function () {
     });
 
     $.ajax({
-        url: 'controller/login.php',
+        url: '../../src/controller/login.php',
         dataType: 'json',
         success: function (data) {
             var id = data.id;
@@ -48,19 +48,10 @@ $(function () {
     });
 
     $("#logout").on("click", function (e) {
-        e.preventDefault();
 
         $.ajax({
-            url: "controller/logout.php",
-            type: "POST",
-            dataType: 'json',
-            success: function (data) {
-                if (data.success == true) {
-                    window.location.href = 'index.php';
-                } else {
-                    alert('Erro ao fechar sessão.');
-                }
-            }
+            url: "../../src/controller/logout.php",
+            type: "POST"
         });
     });
 });

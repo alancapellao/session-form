@@ -2,8 +2,8 @@
 
 if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['email']) && !empty($_POST['email'])) {
 
-    require '../model/connection.php';
-    require '../class/Usuario.class.php';
+    require '../config/connection.php';
+    require '../models/Usuario.class.php';
 
     $id = addslashes($_POST['id']);
     $username = addslashes($_POST['username']);
