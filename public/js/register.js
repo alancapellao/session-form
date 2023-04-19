@@ -7,11 +7,13 @@ $(function () {
         var campoEmail = $("#email").val();
         var campoPassword = $("#password").val();
 
-        if (campoPassword.length === 8) {
-            if (campoUser.trim() == "" || campoEmail.trim() == "" || campoPassword.trim() == "") {
-                alert("Fill in all fields.");
-            } else {
 
+        if (campoUser.trim() == "" || campoEmail.trim() == "" || campoPassword.trim() == "") {
+            alert("Fill in all fields.");
+        } else {
+            if (campoPassword.length !== 8) {
+                alert("Password must contain 8 characters.");
+            } else {
                 $.ajax({
 
                     url: "../../src/controller/insert.php",
@@ -24,7 +26,7 @@ $(function () {
                     success: function (data) {
                         data = JSON.parse(data);
 
-                        if (retorno["erro"]) {
+                        if (data["erro"]) {
                             alert(data["mensagem"]);
                         } else {
                             alert(data["mensagem"]);
@@ -33,8 +35,6 @@ $(function () {
                     }
                 });
             }
-        } else {
-            alert("Password must contain 8 characters.");
         }
     });
 });
