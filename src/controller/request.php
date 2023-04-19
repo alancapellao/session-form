@@ -1,20 +1,14 @@
 <?php
 
-if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['password']) && !empty($_POST['password'])) {
+require '../config/connection.php';
 
-    require '../config/connection.php';
-    require '../models/Usuario.class.php';
+if (isset($_SESSION['id']) && !empty($_SESSION['id'])) {
+    
+    require_once '../models/Usuario.class.php';
 
-    $username = addslashes($_POST['username']);
-    $password = addslashes($_POST['password']);
+    $user = new Usuario(null, null, null, null);
 
-    $username = strtolower($username);
+    $usuario = $user->session();
 
-    $user = new Usuario(null, $username, null, $password);
-
-    if ($user->login() == true) {
-        echo json_encode(array("erro" => 0, "mensagem" => "Login successful!"));
-    } else {
-        echo json_encode(array("erro" => 1, "mensagem" => "Incorrect username or password."));
-    }
+    echo json_encode($usuario);
 }

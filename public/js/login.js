@@ -12,20 +12,20 @@ $(function () {
 
             $.ajax({
 
-                url: "../../src/controller/request.php",
+                url: "../../src/controller/login.php",
                 type: "POST",
                 data: {
                     username: campoUser,
                     password: campoPassword
                 },
-                success: function (retorno) {
-                    retorno = JSON.parse(retorno);
+                success: function (data) {
+                    data = JSON.parse(data);
 
-                    if (retorno["erro"]) {
-                        alert(retorno["mensagem"]);
+                    if (data["erro"]) {
+                        alert(data["mensagem"]);
                     } else {
-                        alert(retorno["mensagem"]);
-                        window.location.href = "session.php";
+                        alert(data["mensagem"]);
+                        window.location.href = "index.php";
                     }
                 }
             });

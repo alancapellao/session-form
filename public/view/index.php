@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['authenticated']) || !$_SESSION['authenticated']) {
+    header('Location: login.php');
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,24 +15,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
-    <title>Login</title>
-</head>
+    <title>Session</title>
 
 <body>
     <div class="page">
         <div class="form">
-            <form class="login-form" id="formulario">
-                <h1>Login</h1>
-                <input type="text" placeholder="username or email" id="username" name="username"/>
-                <input type="password" placeholder="password" id="password" name="password"/>
-                <button id="login">login</button>
-                <p class="message">Not registered? <a href="register.php">Create an account</a></p>
+            <form class="session-form" id="formulario">
+                <input type="text" placeholder="id" id="id" name="id" disabled />
+                <input type="text" placeholder="username" id="username" name="username" />
+                <input type="text" placeholder="email" id="email" name="email" />
+                <button id="update">Update</button>
+                <p class="message"><a href="login.php" id="logout">Logout</a></p>
             </form>
         </div>
     </div>
 </body>
 
-<script src="../js/jquery.js"></script>
-<script src="../js/index.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="../js/session.js"></script>
 
 </html>

@@ -18,13 +18,13 @@
                 <input type="text" placeholder="email" id="email" />
                 <input type="password" placeholder="password" id="password" />
                 <button id="register">register</button>
-                <p class="message">Already registered? <a href="index.php">Sign In</a></p>
+                <p class="message">Already registered? <a href="login.php">Sign In</a></p>
             </form>
         </div>
     </div>
 </body>
 
-<script src="../js/jquery.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../js/register.js"></script>
 
 </html>

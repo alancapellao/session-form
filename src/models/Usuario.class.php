@@ -50,6 +50,7 @@ class Usuario
 
             if (password_verify($this->password, $user['password'])) {
 
+                $_SESSION['authenticated'] = true;
                 $_SESSION['id'] = $user['id'];
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['email'] = $user['email'];
@@ -57,6 +58,7 @@ class Usuario
                 return true;
             } else {
 
+                unset($_SESSION['authenticated']);
                 unset($_SESSION['id']);
                 unset($_SESSION['username']);
                 unset($_SESSION['email']);
@@ -67,7 +69,6 @@ class Usuario
             return false;
         }
     }
-
 
     public function session()
     {
@@ -81,7 +82,6 @@ class Usuario
 
             $array = $query->fetch();
         }
-
         return $array;
     }
 

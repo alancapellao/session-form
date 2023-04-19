@@ -14,5 +14,4 @@ try {
 } catch (PDOException $e) {
     $conn = null;
 }
-
 ?>

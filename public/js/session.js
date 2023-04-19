@@ -20,13 +20,13 @@ $(function () {
                     username: campoUser,
                     email: campoEmail
                 },
-                success: function (retorno) {
-                    retorno = JSON.parse(retorno);
+                success: function (data) {
+                    data = JSON.parse(data);
 
-                    if (retorno["erro"]) {
-                        alert(retorno["mensagem"]);
+                    if (data["erro"]) {
+                        alert(data["mensagem"]);
                     } else {
-                        alert(retorno["mensagem"]);
+                        alert(data["mensagem"]);
                     }
                 }
             });
@@ -34,15 +34,15 @@ $(function () {
     });
 
     $.ajax({
-        url: '../../src/controller/login.php',
+        url: '../../src/controller/request.php',
         dataType: 'json',
         success: function (data) {
+
             var id = data.id;
             var username = data.username;
             var email = data.email;
             $("#id").val(id);
             $("#username").val(username);
-            $("#email").val(email);
             $("#email").val(email);
         }
     });
@@ -51,7 +51,7 @@ $(function () {
 
         $.ajax({
             url: "../../src/controller/logout.php",
-            type: "POST"
+            type: "GET"
         });
     });
 });
