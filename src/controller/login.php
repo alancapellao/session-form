@@ -2,15 +2,15 @@
 
 if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['password']) && !empty($_POST['password'])) {
 
-    require '../config/connection.php';
-    require '../models/Usuario.class.php';
+    require_once '../config/connection.php';
+    require_once '../models/Usuario.class.php';
 
     $username = addslashes($_POST['username']);
     $password = addslashes($_POST['password']);
 
     $username = strtolower($username);
 
-    $user = new Usuario(null, $username, null, $password);
+    $user = new Usuario(null, $username, null, $password, $conn);
 
     if ($user->login() == true) {
         echo json_encode(array("erro" => 0, "mensagem" => "Login successful!"));

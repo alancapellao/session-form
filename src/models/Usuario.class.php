@@ -6,13 +6,15 @@ class Usuario
     private $username;
     private $email;
     private $password;
+    private $conn;
 
-    public function __construct($id, $username, $email, $password)
+    public function __construct($id, $username, $email, $password, PDO $conn)
     {
         $this->id = $id;
         $this->username = $username;
         $this->email = $email;
         $this->password = $password;
+        $this->conn = $conn;
     }
 
     public function register()
@@ -30,7 +32,7 @@ class Usuario
 
             return false;
         } else {
-            $query = $conn->prepare("INSERT INTO usuarios(username, email, password) values(?, ?, ?)");
+            $query = $this->conn->prepare("INSERT INTO usuarios(username, email, password) values(?, ?, ?)");
             $query->execute(array($this->username, $this->email, password_hash($this->password, PASSWORD_BCRYPT, $options)));
 
             return true;
@@ -39,9 +41,7 @@ class Usuario
 
     public function login()
     {
-        global $conn;
-
-        $query = $conn->prepare("SELECT * FROM usuarios WHERE username = ? or email = ?");
+        $query = $this->conn->prepare("SELECT * FROM usuarios WHERE username = ? or email = ?");
         $query->execute(array($this->username, $this->username));
 
         if ($query->rowCount()) {
@@ -72,24 +72,18 @@ class Usuario
 
     public function session()
     {
-        global $conn;
-        $array = array();
-
-        $query = $conn->prepare("SELECT id, username, email FROM usuarios WHERE username = ? or email = ?");
+        $query = $this->conn->prepare("SELECT id, username, email FROM usuarios WHERE username = ? or email = ?");
         $query->execute(array($_SESSION['username'], $_SESSION['email']));
 
         if ($query->rowCount()) {
-
-            $array = $query->fetch();
+            $data = $query->fetch();
         }
-        return $array;
+        return $data;
     }
 
     public function update()
     {
-        global $conn;
-
-        $query = $conn->prepare("UPDATE usuarios SET username = ?, email = ? where id = ?");
+        $query = $this->conn->prepare("UPDATE usuarios SET username = ?, email = ? where id = ?");
         $query->execute(array($this->username, $this->email, $this->id));
 
         if ($query->rowCount()) {

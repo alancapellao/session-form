@@ -1,12 +1,11 @@
 <?php
 session_start();
 
-$host = "localhost";
-$dbname = "form";
-$user = "root";
-$password = "";
-
-global $conn;
+$config = parse_ini_file('../../database/config.ini');
+$host = $config['host'];
+$dbname = $config['dbname'];
+$user = $config['user'];
+$password = $config['password'];
 
 try {
     $conn = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
@@ -14,4 +13,3 @@ try {
 } catch (PDOException $e) {
     $conn = null;
 }
-?>
