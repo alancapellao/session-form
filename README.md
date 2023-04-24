@@ -4,17 +4,14 @@ Session was a project developed to show how a conventional login system is made,
 
 Developed with PHP and MySQL.
 
-<h3> session.php </h3>
-
-![session](https://user-images.githubusercontent.com/110068135/228551407-5bddb157-d68e-4729-9c27-68267f21d6b3.png)
-
 <h3> index.php </h3>
 
-![index](https://user-images.githubusercontent.com/110068135/228551500-f37c4d90-361d-49a0-aef4-0161b808d7d6.png)
+![3](https://user-images.githubusercontent.com/110068135/233176904-c0ab2875-49b3-4f38-a635-bea02742137a.png)
+
+<h3> login.php </h3>
+
+![1](https://user-images.githubusercontent.com/110068135/233176895-cf7211e9-bfcf-42bb-a54b-db1064f05059.png)
 
 <h3> register.php </h3>
 
-![register](https://user-images.githubusercontent.com/110068135/228551590-d0abb7bb-a65f-40bc-b3ba-104ef291f694.png)
-
-
-
+![2](https://user-images.githubusercontent.com/110068135/233176901-cdcff7b3-3d8d-4a66-8015-2406c93873fc.png)
