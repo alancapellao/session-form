@@ -14,14 +14,14 @@ $(function () {
             $.ajax({
 
                 url: "../../src/controller/update.php",
-                type: "POST",
+                type: "PUT",
+                dataType: 'json',
                 data: {
                     id: campoId,
                     username: campoUser,
                     email: campoEmail
                 },
                 success: function (data) {
-                    data = JSON.parse(data);
 
                     if (data["erro"]) {
                         alert(data["mensagem"]);
@@ -35,6 +35,7 @@ $(function () {
 
     $.ajax({
         url: '../../src/controller/request.php',
+        type: "GET",
         dataType: 'json',
         success: function (data) {
 
@@ -50,8 +51,7 @@ $(function () {
     $("#logout").on("click", function (e) {
 
         $.ajax({
-            url: "../../src/controller/logout.php",
-            type: "GET"
+            url: "../../src/controller/logout.php"
         });
     });
 });

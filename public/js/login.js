@@ -14,12 +14,12 @@ $(function () {
 
                 url: "../../src/controller/login.php",
                 type: "POST",
+                dataType: 'json',
                 data: {
                     username: campoUser,
                     password: campoPassword
                 },
                 success: function (data) {
-                    data = JSON.parse(data);
 
                     if (data["erro"]) {
                         alert(data["mensagem"]);

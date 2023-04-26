@@ -18,13 +18,13 @@ $(function () {
 
                     url: "../../src/controller/insert.php",
                     type: "POST",
+                    dataType: 'json',
                     data: {
                         username: campoUser,
                         email: campoEmail,
                         password: campoPassword
                     },
                     success: function (data) {
-                        data = JSON.parse(data);
 
                         if (data["erro"]) {
                             alert(data["mensagem"]);
