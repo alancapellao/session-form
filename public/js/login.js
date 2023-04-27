@@ -9,12 +9,10 @@ $(function () {
         if (campoUser.trim() == "" || campoPassword.trim() == "") {
             alert("Fill in all fields.");
         } else {
-
             $.ajax({
-
                 url: "../../src/controller/login.php",
                 type: "POST",
-                dataType: 'json',
+                dataType: "json",
                 data: {
                     username: campoUser,
                     password: campoPassword

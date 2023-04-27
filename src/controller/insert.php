@@ -1,8 +1,9 @@
 <?php
 
+require_once '../config/connection.php';
+
 if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['password']) && !empty($_POST['password'])) {
 
-    require_once '../config/connection.php';
     require_once '../models/Usuario.class.php';
 
     $username = addslashes($_POST['username']);

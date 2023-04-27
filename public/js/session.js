@@ -10,12 +10,10 @@ $(function () {
         if (campoUser.trim() == "" || campoEmail.trim() == "") {
             alert("Fill in all fields.");
         } else {
-
             $.ajax({
-
                 url: "../../src/controller/update.php",
                 type: "PUT",
-                dataType: 'json',
+                dataType: "json",
                 data: {
                     id: campoId,
                     username: campoUser,
@@ -34,9 +32,9 @@ $(function () {
     });
 
     $.ajax({
-        url: '../../src/controller/request.php',
+        url: "../../src/controller/request.php",
         type: "GET",
-        dataType: 'json',
+        dataType: "json",
         success: function (data) {
 
             var id = data.id;

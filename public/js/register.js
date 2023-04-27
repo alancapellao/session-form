@@ -7,7 +7,6 @@ $(function () {
         var campoEmail = $("#email").val();
         var campoPassword = $("#password").val();
 
-
         if (campoUser.trim() == "" || campoEmail.trim() == "" || campoPassword.trim() == "") {
             alert("Fill in all fields.");
         } else {
@@ -15,10 +14,9 @@ $(function () {
                 alert("Password must contain 8 characters.");
             } else {
                 $.ajax({
-
                     url: "../../src/controller/insert.php",
                     type: "POST",
-                    dataType: 'json',
+                    dataType: "json",
                     data: {
                         username: campoUser,
                         email: campoEmail,
