@@ -12,7 +12,7 @@ $(function () {
         } else {
             $.ajax({
                 url: "../../src/controller/update.php",
-                type: "PUT",
+                method: "PUT",
                 dataType: "json",
                 data: {
                     id: campoId,
@@ -33,7 +33,7 @@ $(function () {
 
     $.ajax({
         url: "../../src/controller/request.php",
-        type: "GET",
+        method: "GET",
         dataType: "json",
         success: function (data) {
 

@@ -15,7 +15,7 @@ $(function () {
             } else {
                 $.ajax({
                     url: "../../src/controller/insert.php",
-                    type: "POST",
+                    method: "POST",
                     dataType: "json",
                     data: {
                         username: campoUser,
