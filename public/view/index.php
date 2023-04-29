@@ -1,10 +1,5 @@
 <?php
-session_start();
-
-if (!isset($_SESSION['authenticated']) || !$_SESSION['authenticated']) {
-    header('Location: login.php');
-    exit;
-}
+require_once '../../src/middleware/auth.php';
 ?>
 
 <!DOCTYPE html>
