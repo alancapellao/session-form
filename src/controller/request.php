@@ -5,7 +5,7 @@ require_once '../config/connection.php';
 
 if (isset($_SESSION['id']) && !empty($_SESSION['id'])) {
 
-    require_once '../models/Usuario.class.php';
+    require_once '../model/Usuario.class.php';
 
     $user = new Usuario(null, null, null, null, $conn);
 

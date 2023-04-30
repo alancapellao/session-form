@@ -3,8 +3,8 @@ $(function () {
     $("#login").on("click", function (e) {
         e.preventDefault();
 
-        var campoUser = $("#username").val();
-        var campoPassword = $("#password").val();
+        const campoUser = $("#username").val();
+        const campoPassword = $("#password").val();
 
         if (campoUser.trim() == "" || campoPassword.trim() == "") {
             alert("Fill in all fields.");

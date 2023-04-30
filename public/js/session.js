@@ -3,16 +3,16 @@ $(function () {
     $("#update").on("click", function (e) {
         e.preventDefault();
 
-        var campoId = $("#id").val();
-        var campoUser = $("#username").val();
-        var campoEmail = $("#email").val();
+        const campoId = $("#id").val();
+        const campoUser = $("#username").val();
+        const campoEmail = $("#email").val();
 
         if (campoUser.trim() == "" || campoEmail.trim() == "") {
             alert("Fill in all fields.");
         } else {
             $.ajax({
                 url: "../../src/controller/update.php",
-                method: "PUT",
+                method: "POST",
                 dataType: "json",
                 data: {
                     id: campoId,
@@ -37,9 +37,10 @@ $(function () {
         dataType: "json",
         success: function (data) {
 
-            var id = data.id;
-            var username = data.username;
-            var email = data.email;
+            const id = data.id;
+            const username = data.username;
+            const email = data.email;
+
             $("#id").val(id);
             $("#username").val(username);
             $("#email").val(email);
