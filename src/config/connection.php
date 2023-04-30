@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 $config = parse_ini_file('../database.ini');
 $host = $config['host'];

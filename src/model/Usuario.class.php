@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 class Usuario
 {
@@ -19,22 +20,14 @@ class Usuario
 
     public function register()
     {
-        global $conn;
-
-        $options = [
-            'cost' => 12,
-        ];
-
-        $query = $conn->prepare("SELECT username, email FROM usuarios WHERE username = ? or email = ?");
+        $query = $this->conn->prepare("SELECT username, email FROM usuarios WHERE username = ? or email = ?");
         $query->execute(array($this->username, $this->email));
 
         if ($query->rowCount()) {
-
             return false;
         } else {
             $query = $this->conn->prepare("INSERT INTO usuarios(username, email, password) values(?, ?, ?)");
-            $query->execute(array($this->username, $this->email, password_hash($this->password, PASSWORD_BCRYPT, $options)));
-
+            $query->execute(array($this->username, $this->email, password_hash($this->password, PASSWORD_BCRYPT, ['cost' => 12])));
             return true;
         }
     }
@@ -54,7 +47,6 @@ class Usuario
                 $_SESSION['id'] = $user['id'];
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['email'] = $user['email'];
-
                 return true;
             } else {
 
@@ -62,7 +54,6 @@ class Usuario
                 unset($_SESSION['id']);
                 unset($_SESSION['username']);
                 unset($_SESSION['email']);
-
                 return false;
             }
         } else {
