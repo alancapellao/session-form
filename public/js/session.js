@@ -32,7 +32,7 @@ $(function () {
     });
 
     $.ajax({
-        url: "../../src/controller/request.php",
+        url: "../../src/controller/session.php",
         method: "GET",
         dataType: "json",
         success: function (data) {

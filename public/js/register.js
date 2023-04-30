@@ -14,7 +14,7 @@ $(function () {
                 alert("Password must contain 8 characters.");
             } else {
                 $.ajax({
-                    url: "../../src/controller/insert.php",
+                    url: "../../src/controller/register.php",
                     method: "POST",
                     dataType: "json",
                     data: {

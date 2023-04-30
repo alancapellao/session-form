@@ -41,18 +41,18 @@ class Usuario
             $user = $query->fetch();
 
             if (password_verify($this->password, $user['password'])) {
-
                 $_SESSION['authenticated'] = true;
                 $_SESSION['id'] = $user['id'];
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['email'] = $user['email'];
+
                 return true;
             } else {
-
                 unset($_SESSION['authenticated']);
                 unset($_SESSION['id']);
                 unset($_SESSION['username']);
                 unset($_SESSION['email']);
+
                 return false;
             }
         } else {

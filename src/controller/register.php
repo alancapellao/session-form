@@ -17,7 +17,6 @@ if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['ema
 
     if ($user->register() == true) {
         echo json_encode(array("erro" => 0, "mensagem" => "Successfully registered!"));
-        exit();
     } else {
         echo json_encode(array("erro" => 1, "mensagem" => "User or email already exists."));
     }
