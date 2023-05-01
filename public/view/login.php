@@ -17,6 +17,7 @@
                 <input type="text" placeholder="username or email" id="username" name="username"/>
                 <input type="password" placeholder="password" id="password" name="password"/>
                 <button id="login">login</button>
+                <br><br>
                 <p class="message">Not registered? <a href="register.php">Create an account</a></p>
             </form>
         </div>

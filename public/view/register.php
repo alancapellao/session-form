@@ -18,6 +18,7 @@
                 <input type="text" placeholder="email" id="email" />
                 <input type="password" placeholder="password" id="password" />
                 <button id="register">register</button>
+                <br><br>
                 <p class="message">Already registered? <a href="login.php">Sign In</a></p>
             </form>
         </div>

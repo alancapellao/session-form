@@ -19,8 +19,11 @@ require_once '../../src/middleware/auth.php';
                 <input type="text" placeholder="id" id="id" name="id" disabled />
                 <input type="text" placeholder="username" id="username" name="username" />
                 <input type="text" placeholder="email" id="email" name="email" />
-                <button id="update">Update</button>
-                <p class="message"><a href="login.php" id="logout">Logout</a></p>
+                <button id="update">update</button>
+                <br><br>
+                <p class="message"><a href="" id="logout">Logout</a></p>
+                <h5>Or</h5>
+                <p class="message"><a href="" id="delete">Delete Account</a></p>
             </form>
         </div>
     </div>

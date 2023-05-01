@@ -24,10 +24,9 @@ $(function () {
                     },
                     success: function (data) {
 
-                        if (data["erro"]) {
-                            alert(data["mensagem"]);
+                        if (data["error"]) {
+                            alert(data["message"]);
                         } else {
-                            alert(data["mensagem"]);
                             window.location.href = "login.php";
                         }
                     }

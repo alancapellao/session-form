@@ -6,26 +6,26 @@ class Usuario
     private $username;
     private $email;
     private $password;
-    private $conn;
+    private $pdo;
 
-    public function __construct($id, $username, $email, $password, PDO $conn)
+    public function __construct($id, $username, $email, $password, PDO $pdo)
     {
         $this->id = $id;
         $this->username = $username;
         $this->email = $email;
         $this->password = $password;
-        $this->conn = $conn;
+        $this->pdo = $pdo;
     }
 
     public function register()
     {
-        $query = $this->conn->prepare("SELECT username, email FROM usuarios WHERE username = ? or email = ?");
+        $query = $this->pdo->prepare("SELECT username, email FROM usuarios WHERE username = ? or email = ?");
         $query->execute(array($this->username, $this->email));
 
         if ($query->rowCount()) {
             return false;
         } else {
-            $query = $this->conn->prepare("INSERT INTO usuarios(username, email, password) values(?, ?, ?)");
+            $query = $this->pdo->prepare("INSERT INTO usuarios(username, email, password) values(?, ?, ?)");
             $query->execute(array($this->username, $this->email, password_hash($this->password, PASSWORD_BCRYPT, ['cost' => 12])));
             return true;
         }
@@ -33,7 +33,7 @@ class Usuario
 
     public function login()
     {
-        $query = $this->conn->prepare("SELECT * FROM usuarios WHERE username = ? or email = ?");
+        $query = $this->pdo->prepare("SELECT * FROM usuarios WHERE username = ? or email = ?");
         $query->execute(array($this->username, $this->username));
 
         if ($query->rowCount()) {
@@ -62,7 +62,7 @@ class Usuario
 
     public function session()
     {
-        $query = $this->conn->prepare("SELECT id, username, email FROM usuarios WHERE username = ? or email = ?");
+        $query = $this->pdo->prepare("SELECT id, username, email FROM usuarios WHERE username = ? or email = ?");
         $query->execute(array($_SESSION['username'], $_SESSION['email']));
 
         if ($query->rowCount()) {
@@ -73,10 +73,24 @@ class Usuario
 
     public function update()
     {
-        $query = $this->conn->prepare("UPDATE usuarios SET username = ?, email = ? where id = ?");
+        $query = $this->pdo->prepare("UPDATE usuarios SET username = ?, email = ? where id = ?");
         $query->execute(array($this->username, $this->email, $this->id));
 
         if ($query->rowCount()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function delete()
+    {
+        $query = $this->pdo->prepare("DELETE FROM usuarios where id = ?");
+        $query->execute(array($this->id));
+
+        if ($query->rowCount()) {
+            session_unset();
+            session_destroy();
             return true;
         } else {
             return false;

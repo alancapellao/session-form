@@ -3,7 +3,7 @@ session_start();
 
 require_once '../config/connection.php';
 
-if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['password']) && !empty($_POST['password'])) {
+if (isset($_POST['username']) && isset($_POST['password'])) {
 
     require_once '../model/Usuario.class.php';
 
@@ -12,11 +12,11 @@ if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['pas
 
     $username = strtolower($username);
 
-    $user = new Usuario(null, $username, null, $password, $conn);
+    $user = new Usuario(null, $username, null, $password, $pdo);
 
     if ($user->login() == true) {
-        echo json_encode(array("erro" => 0, "mensagem" => "Login successful!"));
+        echo json_encode(array("error" => 0, "message" => "Login successful!"));
     } else {
-        echo json_encode(array("erro" => 1, "mensagem" => "Incorrect username or password."));
+        echo json_encode(array("error" => 1, "message" => "Incorrect username or password."));
     }
 }

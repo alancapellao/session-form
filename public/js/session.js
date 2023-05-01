@@ -21,10 +21,10 @@ $(function () {
                 },
                 success: function (data) {
 
-                    if (data["erro"]) {
-                        alert(data["mensagem"]);
+                    if (data["error"]) {
+                        alert(data["message"]);
                     } else {
-                        alert(data["mensagem"]);
+                        alert(data["message"]);
                     }
                 }
             });
@@ -37,20 +37,38 @@ $(function () {
         dataType: "json",
         success: function (data) {
 
-            const id = data.id;
-            const username = data.username;
-            const email = data.email;
-
-            $("#id").val(id);
-            $("#username").val(username);
-            $("#email").val(email);
+            $("#id").val(data.id);
+            $("#username").val(data.username);
+            $("#email").val(data.email);
         }
     });
 
     $("#logout").on("click", function (e) {
 
         $.ajax({
-            url: "../../src/controller/logout.php"
+            url: "../../src/controller/logout.php",
+            success: function () {
+                window.location.href = "login.php";
+            }
         });
+
+    });
+
+    $("#delete").on("click", function (e) {
+        e.preventDefault();
+
+        if (confirm('Are you sure you want to delete the account?')) {
+            $.ajax({
+                url: "../../src/controller/delete.php",
+                success: function (data) {
+
+                    if (data["error"]) {
+                        alert(data["message"]);
+                    } else {
+                        window.location.href = "login.php";
+                    }
+                }
+            });
+        }
     });
 });

@@ -13,11 +13,11 @@ if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['ema
     $username = strtolower($username);
     $email = strtolower($email);
 
-    $user = new Usuario(null, $username, $email, $password, $conn);
+    $user = new Usuario(null, $username, $email, $password, $pdo);
 
     if ($user->register() == true) {
-        echo json_encode(array("erro" => 0, "mensagem" => "Successfully registered!"));
+        echo json_encode(array("error" => 0, "message" => "Successfully registered!"));
     } else {
-        echo json_encode(array("erro" => 1, "mensagem" => "User or email already exists."));
+        echo json_encode(array("error" => 1, "message" => "User or email already exists."));
     }
 }

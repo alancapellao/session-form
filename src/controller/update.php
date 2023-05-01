@@ -13,11 +13,11 @@ if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['ema
     $username = strtolower($username);
     $email = strtolower($email);
 
-    $user = new Usuario($id, $username, $email, null, $conn);
+    $user = new Usuario($id, $username, $email, null, $pdo);
 
     if ($user->update() == true) {
-        echo json_encode(array("erro" => 0, "mensagem" => "Successfully update!"));
+        echo json_encode(array("error" => 0, "message" => "Successfully update!"));
     } else {
-        echo json_encode(array("erro" => 1, "mensagem" => "User or email already exists."));
+        echo json_encode(array("error" => 1, "message" => "User or email already exists."));
     }
 }
