@@ -43,27 +43,18 @@ class Usuario
             if (password_verify($this->password, $user['password'])) {
                 $_SESSION['authenticated'] = true;
                 $_SESSION['id'] = $user['id'];
-                $_SESSION['username'] = $user['username'];
-                $_SESSION['email'] = $user['email'];
-
                 return true;
             } else {
-                unset($_SESSION['authenticated']);
-                unset($_SESSION['id']);
-                unset($_SESSION['username']);
-                unset($_SESSION['email']);
-
                 return false;
             }
-        } else {
-            return false;
         }
+        return false;
     }
 
     public function session()
     {
-        $query = $this->pdo->prepare("SELECT id, username, email FROM usuarios WHERE username = ? or email = ?");
-        $query->execute(array($_SESSION['username'], $_SESSION['email']));
+        $query = $this->pdo->prepare("SELECT id, username, email FROM usuarios WHERE id = ?");
+        $query->execute(array($_SESSION['id']));
 
         if ($query->rowCount()) {
             $data = $query->fetch();
