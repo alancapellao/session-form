@@ -6,12 +6,12 @@ Developed with PHP and MySQL.
 
 <h3> index.php </h3>
 
-![3](https://user-images.githubusercontent.com/110068135/233176904-c0ab2875-49b3-4f38-a635-bea02742137a.png)
+![1](https://user-images.githubusercontent.com/110068135/235529149-06061e32-6876-4006-b8c1-83c5701acf90.png)
 
 <h3> login.php </h3>
 
-![1](https://user-images.githubusercontent.com/110068135/233176895-cf7211e9-bfcf-42bb-a54b-db1064f05059.png)
+![2](https://user-images.githubusercontent.com/110068135/235529172-08cf6cc0-98ea-43db-82e5-1bd967ef6e37.png)
 
 <h3> register.php </h3>
 
-![2](https://user-images.githubusercontent.com/110068135/233176901-cdcff7b3-3d8d-4a66-8015-2406c93873fc.png)
+![3](https://user-images.githubusercontent.com/110068135/235529199-aebba682-9ebd-480d-809d-765a6a18298a.png)
